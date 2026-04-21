@@ -72,7 +72,7 @@ export const Collection = () => {
     <section id="collection" className="relative py-16 md:py-24 bg-surface/40">
       <div className="container-luxe">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 md:mb-24 gap-8 reveal">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12 gap-8 reveal">
           <div>
             <span className="text-gold text-[10px] tracking-[0.5em] uppercase block mb-6">
               ✦ Коллекция · I
