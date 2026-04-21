@@ -127,15 +127,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Massive ghost wordmark */}
-      <div
-        aria-hidden
-        className="pointer-events-none select-none w-full overflow-hidden mt-12"
-      >
-        <div className="font-display text-[28vw] leading-[0.85] text-foreground/[0.03] text-center whitespace-nowrap">
-          ЕРМАК
-        </div>
-      </div>
+      {/* Massive ghost wordmark removed */}
     </footer>
   );
 };

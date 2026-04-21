@@ -69,7 +69,7 @@ export const Collection = () => {
   };
 
   return (
-    <section id="collection" className="relative py-24 md:py-32 bg-surface/40">
+    <section id="collection" className="relative py-16 md:py-24 bg-surface/40">
       <div className="container-luxe">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16 md:mb-24 gap-8 reveal">
