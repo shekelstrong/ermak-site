@@ -31,17 +31,17 @@ export const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container-luxe flex items-center justify-between h-16 md:h-20">
+        <div className="container-luxe flex items-center justify-between h-16 md:h-20 gap-4">
           <button
-            className="md:hidden text-foreground p-1 -ml-1"
+            className="lg:hidden text-foreground p-1 -ml-1"
             onClick={() => setMobileOpen(true)}
             aria-label="Меню"
           >
             <Menu size={22} />
           </button>
 
-          <nav className="hidden md:flex items-center gap-10 text-[11px] tracking-[0.22em] uppercase">
-            {links.map((l) => (
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-[11px] tracking-[0.22em] uppercase flex-1">
+            {links.slice(0, 2).map((l) => (
               <a
                 key={l.href}
                 href={l.href}
@@ -54,13 +54,25 @@ export const Navbar = () => {
 
           <a
             href="#top"
-            className="absolute left-1/2 -translate-x-1/2 font-display text-2xl md:text-3xl tracking-wider text-foreground hover:text-gold transition-colors"
+            className="font-display text-2xl md:text-3xl tracking-wider text-foreground hover:text-gold transition-colors whitespace-nowrap lg:flex-shrink-0"
             aria-label="ЕРМАК"
           >
-            ЕРМАКЪ
+            ЕРМАК
           </a>
 
-          <div className="flex items-center gap-4 md:gap-6 text-foreground/80">
+          <nav className="hidden lg:flex items-center gap-8 xl:gap-10 text-[11px] tracking-[0.22em] uppercase flex-1 justify-end">
+            {links.slice(2).map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-foreground/70 hover:text-gold transition-colors duration-300"
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-4 md:gap-6 text-foreground/80 lg:flex-shrink-0">
             <button aria-label="Поиск" className="hidden md:block hover:text-gold transition-colors">
               <Search size={18} strokeWidth={1.5} />
             </button>
@@ -82,7 +94,7 @@ export const Navbar = () => {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-[60] md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -96,7 +108,7 @@ export const Navbar = () => {
           }`}
         >
           <div className="flex justify-between items-center mb-12">
-            <span className="font-display text-2xl text-gold">ЕРМАКЪ</span>
+            <span className="font-display text-2xl text-gold">ЕРМАК</span>
             <button onClick={() => setMobileOpen(false)} aria-label="Закрыть">
               <X size={22} />
             </button>

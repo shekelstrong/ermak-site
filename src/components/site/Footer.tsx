@@ -80,7 +80,7 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-12 py-16">
           <div className="col-span-2 md:col-span-4">
             <a href="#top" className="font-display text-4xl md:text-5xl text-foreground hover:text-gold transition-colors block mb-4">
-              ЕРМАКЪ
+              ЕРМАК
             </a>
             <p className="text-foreground/50 text-sm leading-relaxed font-serif italic max-w-xs">
               Премiальная одежда, рождённая Традицией.
@@ -119,7 +119,7 @@ export const Footer = () => {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
-          <div>© 2026 ЕРМАКЪ · Все права защищены</div>
+          <div>© 2026 ЕРМАК · Все права защищены</div>
           <div className="flex items-center gap-2">
             <span>Сдѣлано в Россiи</span>
             <span className="text-gold">☦</span>
@@ -133,7 +133,7 @@ export const Footer = () => {
         className="pointer-events-none select-none w-full overflow-hidden mt-12"
       >
         <div className="font-display text-[28vw] leading-[0.85] text-foreground/[0.03] text-center whitespace-nowrap">
-          ЕРМАКЪ
+          ЕРМАК
         </div>
       </div>
     </footer>
