@@ -9,7 +9,7 @@ export const Philosophy = () => {
       {/* Watermark cross */}
       <div
         aria-hidden
-        className="absolute -right-20 top-1/2 -translate-y-1/2 text-[28rem] md:text-[42rem] text-gold/[0.04] font-serif select-none pointer-events-none leading-none"
+        className="hidden md:block absolute -right-20 top-1/2 -translate-y-1/2 text-[28rem] md:text-[42rem] text-gold/[0.04] font-serif select-none pointer-events-none leading-none overflow-hidden"
       >
         ☦
       </div>

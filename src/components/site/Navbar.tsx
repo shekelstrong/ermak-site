@@ -40,7 +40,7 @@ export const Navbar = () => {
             <Menu size={22} />
           </button>
 
-          <nav className="hidden md:flex items-center gap-10 text-[11px] tracking-[0.22em] uppercase">
+          <nav className="hidden lg:flex items-center gap-10 text-[11px] tracking-[0.22em] uppercase">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -54,7 +54,7 @@ export const Navbar = () => {
 
           <a
             href="#top"
-            className="absolute left-1/2 -translate-x-1/2 font-display text-2xl md:text-3xl tracking-wider text-foreground hover:text-gold transition-colors"
+            className="absolute left-1/2 -translate-x-1/2 font-display text-2xl md:text-3xl tracking-wider text-foreground hover:text-gold transition-colors whitespace-nowrap"
             aria-label="ЕРМАК"
           >
             ЕРМАКЪ
