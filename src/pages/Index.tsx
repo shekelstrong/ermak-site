@@ -13,10 +13,10 @@ const Index = () => {
   useReveal();
 
   useEffect(() => {
-    document.title = "ЕРМАКЪ — Премиум одежда. Вчера. Сегодня. Вечно.";
+    document.title = "ЕРМАК — Премиум одежда. Вчера. Сегодня. Вечно.";
     const meta = document.querySelector('meta[name="description"]');
     const desc =
-      "ЕРМАКЪ — премиум стритвер, вдохновлённый казачьей культурой и православной традицией. Коллекция футболок ручной работы из России.";
+      "ЕРМАК — премиум стритвер, вдохновлённый казачьей культурой и православной традицией. Коллекция футболок ручной работы из России.";
     if (meta) meta.setAttribute("content", desc);
     else {
       const m = document.createElement("meta");
