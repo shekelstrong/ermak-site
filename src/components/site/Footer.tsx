@@ -18,9 +18,9 @@ const sections = [
 ];
 
 const socials = [
-  { label: "Telegram", href: "#" },
-  { label: "Instagram", href: "#" },
-  { label: "VK", href: "#" },
+  { label: "Telegram", href: "https://t.me/ermakbrand" },
+  { label: "Instagram", href: "https://www.instagram.com/ermak.wear" },
+  { label: "VK", href: "https://vk.com/ermakbrand" },
 ];
 
 export const Footer = () => {

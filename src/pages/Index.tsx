@@ -6,6 +6,7 @@ import { Collection } from "@/components/site/Collection";
 import { Lookbook } from "@/components/site/Lookbook";
 import { Footer } from "@/components/site/Footer";
 import { CartDrawer } from "@/components/site/CartDrawer";
+import { ChatWidget } from "@/components/site/ChatWidget";
 import { useReveal } from "@/hooks/useReveal";
 
 const Index = () => {
@@ -36,6 +37,7 @@ const Index = () => {
       </main>
       <Footer />
       <CartDrawer />
+      <ChatWidget />
     </div>
   );
 };
