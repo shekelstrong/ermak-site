@@ -33,7 +33,7 @@ export const Navbar = () => {
       >
         <div className="container-luxe flex items-center justify-between h-16 md:h-20">
           <button
-            className="md:hidden text-foreground p-1 -ml-1"
+            className="lg:hidden text-foreground p-1 -ml-1"
             onClick={() => setMobileOpen(true)}
             aria-label="Меню"
           >
@@ -82,7 +82,7 @@ export const Navbar = () => {
 
       {/* Mobile drawer */}
       <div
-        className={`fixed inset-0 z-[60] md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ${
           mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
       >
