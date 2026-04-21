@@ -50,7 +50,7 @@ export const Hero = () => {
           className="font-display text-[18vw] md:text-[15vw] lg:text-[180px] leading-[0.9] text-foreground opacity-0 animate-fade-in"
           style={{ animationDelay: "0.4s", textShadow: "0 0 60px hsl(0 0% 0% / 0.6)" }}
         >
-          ЕРМАКЪ
+          ЕРМАК
         </h1>
 
         <div
