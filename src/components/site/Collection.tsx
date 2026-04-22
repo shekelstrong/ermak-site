@@ -69,7 +69,7 @@ export const Collection = () => {
   };
 
   return (
-    <section id="collection" className="relative py-16 md:py-24 bg-surface/40">
+    <section id="collection" className="relative py-10 md:py-16 bg-surface/40">
       <div className="container-luxe">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 md:mb-12 gap-8 reveal">
@@ -77,9 +77,8 @@ export const Collection = () => {
             <span className="text-gold text-[10px] tracking-[0.5em] uppercase block mb-6">
               ✦ Коллекция · I
             </span>
-            <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-foreground">
-              Канон<br />
-              <span className="italic text-foreground/50">наследия</span>
+            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[0.95] text-foreground">
+              Канон <span className="italic text-foreground/50">наследия</span>
             </h2>
           </div>
           <p className="max-w-md text-foreground/60 text-base md:text-lg leading-relaxed font-light">
