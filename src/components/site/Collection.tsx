@@ -18,6 +18,7 @@ type Product = {
 };
 
 const CF_URL = "https://orientation-ohio-palmer-donations.trycloudflare.com";
+const DIRECT_URL = "http://108.165.164.85:3001";
 
 function getApiBase() {
   if (typeof window === "undefined") return "";
@@ -44,7 +45,15 @@ export const Collection = () => {
     fetch(`${base}/api/products`)
       .then((r) => r.json())
       .then((data: Product[]) => setProducts(data.filter((p) => p.active !== false)))
-      .catch(() => {});
+      .catch(() => {
+        // Fallback to direct IP if Cloudflare tunnel fails
+        if (base === CF_URL) {
+          fetch(`${DIRECT_URL}/api/products`)
+            .then((r) => r.json())
+            .then((data: Product[]) => setProducts(data.filter((p) => p.active !== false)))
+            .catch(() => {});
+        }
+      });
   }, []);
 
   const imgBase = getImgBase();
