@@ -2,6 +2,21 @@ import { useState, useEffect } from "react";
 import { Plus, X } from "lucide-react";
 import { useCart } from "@/store/cart";
 import { toast } from "sonner";
+import { supabaseSelect } from "@/lib/supabase";
+
+type ProductRow = {
+  id: number;
+  name: string;
+  description: string | null;
+  price: number;
+  old_price: number | null;
+  category: string | null;
+  sizes: string[] | null;
+  images: string[] | null;
+  badge: string | null;
+  active: boolean;
+  emoji: string | null;
+};
 
 type Product = {
   id: number;
@@ -17,11 +32,20 @@ type Product = {
   emoji: string;
 };
 
-const SUPABASE_URL = "https://rakkojwkwkrrefxjpkgi.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJha2tvandrd2tycmVmeGpwa2dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTA3NTAsImV4cCI6MjA5MjQ2Njc1MH0.j6F3oNuE134R6w9oXkVmhzimpcz6Ow1a76bdwRZ-xAA";
-
-function getImgBase() {
-  return getApiBase();
+function mapProduct(row: ProductRow): Product {
+  return {
+    id: row.id,
+    name: row.name,
+    desc: row.description ?? "",
+    price: row.price,
+    oldPrice: row.old_price ?? null,
+    category: row.category ?? "",
+    sizes: row.sizes ?? ["S", "M", "L", "XL"],
+    images: row.images ?? [],
+    badge: row.badge ?? null,
+    active: row.active,
+    emoji: row.emoji ?? "📦",
+  };
 }
 
 export const Collection = () => {
@@ -32,23 +56,16 @@ export const Collection = () => {
   const [modalSize, setModalSize] = useState("M");
 
   useEffect(() => {
-    fetch(`${SUPABASE_URL}/rest/v1/products?select=*&active=eq.true`, {
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`
-      }
-    })
-      .then((r) => r.json())
-      .then((data: Product[]) => setProducts(data))
-      .catch((err) => console.error('Failed to load products:', err));
+    supabaseSelect<ProductRow[]>(
+      "products?select=*&active=eq.true&order=created_at.desc",
+    )
+      .then((rows) => setProducts(rows.map(mapProduct)))
+      .catch((err) => console.error("Failed to load products:", err));
   }, []);
-
-  const imgBase = getImgBase();
 
   const getImg = (p: Product) => {
     if (p.images && p.images.length > 0) {
-      const src = p.images[0];
-      return src.startsWith("http") ? src : `${imgBase}${src}`;
+      return p.images[0];
     }
     return null;
   };
@@ -223,7 +240,9 @@ export const Collection = () => {
                         key={s}
                         onClick={() => setModalSize(s)}
                         className={`w-10 h-10 text-sm border transition-all ${
-                          modalSize === s ? "border-gold text-gold bg-gold/10" : "border-foreground/30 text-foreground/70 hover:border-foreground"
+                          modalSize === s
+                            ? "border-gold text-gold bg-gold/10"
+                            : "border-foreground/30 text-foreground/70 hover:border-foreground"
                         }`}
                       >
                         {s}
@@ -231,10 +250,13 @@ export const Collection = () => {
                     ))}
                   </div>
                   <button
-                    onClick={() => { handleAdd(modal, modalSize); setModal(null); }}
-                    className="w-full bg-foreground text-background text-[11px] tracking-[0.3em] uppercase py-4 font-medium hover:bg-gold transition-colors duration-300 flex items-center justify-center gap-2"
+                    onClick={() => {
+                      handleAdd(modal, modalSize);
+                      setModal(null);
+                    }}
+                    className="w-full bg-foreground text-background text-xs tracking-[0.3em] uppercase py-4 font-medium hover:bg-gold transition-colors"
                   >
-                    <Plus size={14} strokeWidth={2} />
+                    <Plus size={14} strokeWidth={2} className="inline mr-2" />
                     Добавить в корзину
                   </button>
                 </div>
