@@ -63,6 +63,19 @@ export const Collection = () => {
       .catch((err) => console.error("Failed to load products:", err));
   }, []);
 
+  // Product cards are rendered after the global IntersectionObserver in
+  // useReveal() has already scanned the DOM, so it never sees them. Reveal
+  // them manually on the next frame once products are loaded.
+  useEffect(() => {
+    if (products.length === 0) return;
+    const id = requestAnimationFrame(() => {
+      document
+        .querySelectorAll<HTMLElement>("#collection .reveal")
+        .forEach((el) => el.classList.add("is-visible"));
+    });
+    return () => cancelAnimationFrame(id);
+  }, [products]);
+
   const getImg = (p: Product) => {
     if (p.images && p.images.length > 0) {
       return p.images[0];
