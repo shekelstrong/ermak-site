@@ -17,17 +17,8 @@ type Product = {
   emoji: string;
 };
 
-const CF_URL = "https://orientation-ohio-palmer-donations.trycloudflare.com";
-const DIRECT_URL = "http://108.165.164.85:3001";
-
-function getApiBase() {
-  if (typeof window === "undefined") return "";
-  const h = window.location.hostname;
-  if (h.includes("vercel") || (h !== "108.165.164.85" && h !== "localhost" && h !== "127.0.0.1")) {
-    return CF_URL;
-  }
-  return "";
-}
+const SUPABASE_URL = "https://rakkojwkwkrrefxjpkgi.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJha2tvandrd2tycmVmeGpwa2dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTA3NTAsImV4cCI6MjA5MjQ2Njc1MH0.j6F3oNuE134R6w9oXkVmhzimpcz6Ow1a76bdwRZ-xAA";
 
 function getImgBase() {
   return getApiBase();
@@ -41,19 +32,15 @@ export const Collection = () => {
   const [modalSize, setModalSize] = useState("M");
 
   useEffect(() => {
-    const base = getApiBase();
-    fetch(`${base}/api/products`)
+    fetch(`${SUPABASE_URL}/rest/v1/products?select=*&active=eq.true`, {
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`
+      }
+    })
       .then((r) => r.json())
-      .then((data: Product[]) => setProducts(data.filter((p) => p.active !== false)))
-      .catch(() => {
-        // Fallback to direct IP if Cloudflare tunnel fails
-        if (base === CF_URL) {
-          fetch(`${DIRECT_URL}/api/products`)
-            .then((r) => r.json())
-            .then((data: Product[]) => setProducts(data.filter((p) => p.active !== false)))
-            .catch(() => {});
-        }
-      });
+      .then((data: Product[]) => setProducts(data))
+      .catch((err) => console.error('Failed to load products:', err));
   }, []);
 
   const imgBase = getImgBase();
