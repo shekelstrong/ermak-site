@@ -2,6 +2,15 @@
 
 # ⚡ Ermak Site
 
+<div align="center">
+
+[![GitHub stars](https://img.shields.io/github/stars/shekelstrong/ermak-site?style=for-the-badge&color=yellow)](https://github.com/shekelstrong/ermak-site/stargazers)
+[![Live](https://img.shields.io/badge/Live-ermak--site.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://ermak-site.vercel.app)
+[![Discussions](https://img.shields.io/github/discussions/shekelstrong/ermak-site?style=for-the-badge&color=58A6FF)](https://github.com/shekelstrong/ermak-site/discussions)
+
+</div>
+
+
 **Modern web presence built with Next.js & Tailwind CSS**
 
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
