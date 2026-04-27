@@ -118,11 +118,20 @@ export const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 border-t border-border/60 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
-          <div>© 2026 ЕРМАК · Все права защищены</div>
-          <div className="flex items-center gap-2">
-            <span>Сдѣлано в Россiи</span>
-            <span className="text-gold">☦</span>
+        <div className="pt-8 border-t border-border/60 flex flex-col gap-4 text-[10px] tracking-[0.25em] uppercase text-muted-foreground">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div>© 2026 ЕРМАК · Все права защищены</div>
+            <div className="flex items-center gap-2">
+              <span>Сдѣлано в Россiи</span>
+              <span className="text-gold">☦</span>
+            </div>
+          </div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-[9px] tracking-[0.15em] text-muted-foreground/60">
+            <div>ИП Куценко Станислав Олегович · ИНН 640701170860</div>
+            <div className="flex items-center gap-4">
+              <a href="/oferta.pdf" className="hover:text-foreground transition-colors">Публичная оферта</a>
+              <a href="/politics.pdf" className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
+            </div>
           </div>
         </div>
       </div>
