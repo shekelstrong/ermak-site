@@ -12,6 +12,7 @@ type ProductRow = {
   old_price: number | null;
   category: string | null;
   sizes: string[] | null;
+  fabric: string | null;
   images: string[] | null;
   badge: string | null;
   active: boolean;
@@ -26,6 +27,7 @@ type Product = {
   oldPrice: number | null;
   category: string;
   sizes: string[];
+  fabric: string;
   images: string[];
   badge: string | null;
   active: boolean;
@@ -41,6 +43,7 @@ function mapProduct(row: ProductRow): Product {
     oldPrice: row.old_price ?? null,
     category: row.category ?? "",
     sizes: row.sizes ?? ["S", "M", "L", "XL"],
+    fabric: row.fabric ?? "",
     images: row.images ?? [],
     badge: row.badge ?? null,
     active: row.active,
