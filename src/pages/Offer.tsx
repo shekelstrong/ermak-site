@@ -18,7 +18,7 @@ const Offer = () => {
 
           <div className="prose prose-lg max-w-none">
             <div className="text-foreground/60 text-sm mb-8 font-light">
-              г. Ростов-на-Дону<br />
+              г. Краснодар<br />
               28.04.2026
             </div>
 
@@ -226,7 +226,7 @@ const Offer = () => {
                 <p>ИНН: 640701170860</p>
                 <p>Сайт: <a href="https://ermakshop.ru/" className="text-gold hover:underline">https://ermakshop.ru/</a></p>
                 <p>Email: <a href="mailto:kutzenko.monik@yandex.ru" className="text-gold hover:underline">kutzenko.monik@yandex.ru</a></p>
-                <p>Город: Ростов-на-Дону</p>
+                <p>Город: Краснодар</p>
               </div>
             </section>
           </div>
