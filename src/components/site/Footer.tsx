@@ -129,8 +129,8 @@ export const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between gap-2 text-[9px] tracking-[0.15em] text-muted-foreground/60">
             <div>ИП Куценко Станислав Олегович · ИНН 640701170860</div>
             <div className="flex items-center gap-4">
-              <a href="/oferta.pdf" className="hover:text-foreground transition-colors">Публичная оферта</a>
-              <a href="/politics.pdf" className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
+              <a href="/offer" className="hover:text-foreground transition-colors">Публичная оферта</a>
+              <a href="/privacy" className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
             </div>
           </div>
         </div>

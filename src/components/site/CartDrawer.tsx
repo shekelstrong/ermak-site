@@ -1,9 +1,12 @@
-import { X, Minus, Plus, ArrowRight, Send } from "lucide-react";
-import { useEffect } from "react";
+import { X, Minus, Plus, ArrowRight, Send, Check } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useCart } from "@/store/cart";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 export const CartDrawer = () => {
   const { items, isOpen, close, setQty, remove, total } = useCart();
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -100,12 +103,38 @@ export const CartDrawer = () => {
               <span className="font-serif text-2xl text-foreground">{total().toLocaleString("ru-RU")} ₽</span>
             </div>
             <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-5">Доставка и налоги · при оформленiи</p>
+            
+            <div className="mb-5">
+              <div className="flex items-start gap-3">
+                <Checkbox 
+                  id="terms"
+                  checked={acceptedTerms}
+                  onCheckedChange={(checked) => setAcceptedTerms(checked === true)}
+                  className="mt-0.5"
+                />
+                <Label 
+                  htmlFor="terms" 
+                  className="text-xs text-foreground/80 leading-relaxed cursor-pointer select-none"
+                >
+                  Я принимаю условия{" "}
+                  <a href="/offer" className="text-gold hover:underline">публичной оферты</a>
+                  {" "}и{" "}
+                  <a href="/privacy" className="text-gold hover:underline">политики обработки персональных данных</a>
+                </Label>
+              </div>
+            </div>
+            
             <button
               onClick={handleCheckout}
-              className="group w-full bg-foreground text-background py-4 text-[11px] tracking-[0.3em] uppercase font-medium flex items-center justify-center gap-3 hover:bg-gold transition-colors duration-300"
+              disabled={!acceptedTerms}
+              className={`group w-full py-4 text-[11px] tracking-[0.3em] uppercase font-medium flex items-center justify-center gap-3 transition-all duration-300 ${
+                acceptedTerms 
+                  ? "bg-foreground text-background hover:bg-gold" 
+                  : "bg-foreground/30 text-foreground/50 cursor-not-allowed"
+              }`}
             >
               Оформить заказъ
-              <Send size={14} className="group-hover:translate-x-1 transition-transform" />
+              <Send size={14} className={acceptedTerms ? "group-hover:translate-x-1 transition-transform" : ""} />
             </button>
           </div>
         )}

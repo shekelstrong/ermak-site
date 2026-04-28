@@ -249,9 +249,14 @@ export const Collection = () => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-3">Размер</p>
-                  <div className="flex gap-2 mb-6">
-                    {(modal.sizes || ["S","M","L","XL"]).map((s) => (
+                  <div className="mb-6">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-3">Состав</p>
+                    <p className="text-sm text-foreground/80">92% хлопок, 8% лайкра</p>
+                  </div>
+                  <div className="mb-6">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-foreground/60 mb-3">Размер</p>
+                    <div className="flex gap-2">
+                      {(modal.sizes || ["S","M","L","XL"]).map((s) => (
                       <button
                         key={s}
                         onClick={() => setModalSize(s)}
@@ -264,6 +269,7 @@ export const Collection = () => {
                         {s}
                       </button>
                     ))}
+                    </div>
                   </div>
                   <button
                     onClick={() => {
