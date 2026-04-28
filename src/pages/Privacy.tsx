@@ -18,7 +18,7 @@ const Privacy = () => {
 
           <div className="prose prose-lg max-w-none">
             <div className="text-foreground/60 text-sm mb-8 font-light">
-              г. Ростов-на-Дону<br />
+              г. Краснодар<br />
               28.04.2026
             </div>
 
