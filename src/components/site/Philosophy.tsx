@@ -54,9 +54,10 @@ export const Philosophy = () => {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-3 gap-8 max-w-md">
+          <div className="mt-12 grid grid-cols-4 gap-8 max-w-lg">
             {[
-              { num: "100%", label: "Хлопок" },
+              { num: "92%", label: "Хлопок" },
+              { num: "8%", label: "Лайкра" },
               { num: "RU", label: "Производство" },
               { num: "MMXXVI", label: "Год основания" },
             ].map((s) => (
