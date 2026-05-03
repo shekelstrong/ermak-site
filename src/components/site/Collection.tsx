@@ -57,6 +57,7 @@ export const Collection = () => {
   const [activeSize, setActiveSize] = useState<Record<number, string>>({});
   const [modal, setModal] = useState<Product | null>(null);
   const [modalSize, setModalSize] = useState("M");
+  const [modalImgIdx, setModalImgIdx] = useState(0);
 
   useEffect(() => {
     supabaseSelect<ProductRow[]>(
@@ -95,6 +96,7 @@ export const Collection = () => {
   const openModal = (p: Product) => {
     setModal(p);
     setModalSize(p.sizes?.[0] || "M");
+    setModalImgIdx(0);
   };
 
   return (
@@ -221,11 +223,39 @@ export const Collection = () => {
               <X size={24} />
             </button>
             <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="aspect-square bg-background">
-                {getImg(modal) ? (
-                  <img src={getImg(modal)!} alt={modal.name} className="w-full h-full object-cover" />
+              <div className="bg-background">
+                {modal.images && modal.images.length > 0 ? (
+                  <>
+                    <div className="aspect-square relative">
+                      <img src={modal.images[modalImgIdx]} alt={`${modal.name} ${modalImgIdx + 1}`} className="w-full h-full object-cover" />
+                      {modal.images.length > 1 && (
+                        <>
+                          {modalImgIdx > 0 && (
+                            <button onClick={() => setModalImgIdx(modalImgIdx - 1)} className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center hover:bg-gold hover:text-background transition-colors">‹</button>
+                          )}
+                          {modalImgIdx < modal.images.length - 1 && (
+                            <button onClick={() => setModalImgIdx(modalImgIdx + 1)} className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/70 backdrop-blur-sm text-foreground flex items-center justify-center hover:bg-gold hover:text-background transition-colors">›</button>
+                          )}
+                          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+                            {modal.images.map((_, idx) => (
+                              <button key={idx} onClick={() => setModalImgIdx(idx)} className={`w-1.5 h-1.5 rounded-full transition-colors ${idx === modalImgIdx ? "bg-gold" : "bg-foreground/30"}`} />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                    {modal.images.length > 1 && (
+                      <div className="flex gap-1 p-1 overflow-x-auto">
+                        {modal.images.map((img, idx) => (
+                          <button key={idx} onClick={() => setModalImgIdx(idx)} className={`shrink-0 w-12 h-12 overflow-hidden border-2 transition-colors ${idx === modalImgIdx ? "border-gold" : "border-transparent opacity-60 hover:opacity-100"}`}>
+                            <img src={img} alt="" className="w-full h-full object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-8xl">{modal.emoji || "📦"}</div>
+                  <div className="aspect-square w-full flex items-center justify-center text-8xl">{modal.emoji || "📦"}</div>
                 )}
               </div>
               <div className="p-8 flex flex-col justify-between">
