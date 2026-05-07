@@ -148,11 +148,7 @@ export const Collection = () => {
                       {p.emoji || "📦"}
                     </div>
                   )}
-                  {p.badge && (
-                    <span className="absolute top-4 left-4 z-10 text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/40 px-3 py-1 bg-background/40 backdrop-blur-sm">
-                      {p.badge}
-                    </span>
-                  )}
+
 
                   {/* Hover overlay */}
                   <div className="product-overlay" onClick={(e) => e.stopPropagation()}>
@@ -260,11 +256,6 @@ export const Collection = () => {
               </div>
               <div className="p-8 flex flex-col justify-between">
                 <div>
-                  {modal.badge && (
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-gold border border-gold/40 px-3 py-1 bg-background/40">
-                      {modal.badge}
-                    </span>
-                  )}
                   <h2 className="font-serif text-3xl text-foreground mt-3">{modal.name}</h2>
                   <p className="mt-3 text-foreground/60 text-sm leading-relaxed">{modal.desc}</p>
                   <div className="mt-4 flex items-baseline gap-3">

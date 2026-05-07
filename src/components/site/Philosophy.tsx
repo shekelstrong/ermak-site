@@ -27,10 +27,7 @@ export const Philosophy = () => {
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-[10px] tracking-[0.3em] text-foreground/70 uppercase">
-              <span>Поле · Степь</span>
-              <span>№ 001</span>
-            </div>
+
           </div>
         </div>
 
