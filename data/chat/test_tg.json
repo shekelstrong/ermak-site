@@ -1,0 +1,11 @@
+{
+  "visitor_id": "test_tg",
+  "name": null,
+  "messages": [
+    {
+      "role": "visitor",
+      "text": "тестовое сообщение в телеграм",
+      "time": "2026-04-20T23:34:35.566Z"
+    }
+  ]
+}

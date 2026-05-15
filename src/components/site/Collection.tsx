@@ -2,22 +2,6 @@ import { useState, useEffect } from "react";
 import { Plus, X } from "lucide-react";
 import { useCart } from "@/store/cart";
 import { toast } from "sonner";
-import { supabaseSelect } from "@/lib/supabase";
-
-type ProductRow = {
-  id: number;
-  name: string;
-  description: string | null;
-  price: number;
-  old_price: number | null;
-  category: string | null;
-  sizes: string[] | null;
-  fabric: string | null;
-  images: string[] | null;
-  badge: string | null;
-  active: boolean;
-  emoji: string | null;
-};
 
 type Product = {
   id: number;
@@ -34,23 +18,6 @@ type Product = {
   emoji: string;
 };
 
-function mapProduct(row: ProductRow): Product {
-  return {
-    id: row.id,
-    name: row.name,
-    desc: row.description ?? "",
-    price: row.price,
-    oldPrice: row.old_price ?? null,
-    category: row.category ?? "",
-    sizes: row.sizes ?? ["S", "M", "L", "XL"],
-    fabric: row.fabric ?? "",
-    images: row.images ?? [],
-    badge: row.badge ?? null,
-    active: row.active,
-    emoji: row.emoji ?? "📦",
-  };
-}
-
 export const Collection = () => {
   const add = useCart((s) => s.add);
   const [products, setProducts] = useState<Product[]>([]);
@@ -60,10 +27,9 @@ export const Collection = () => {
   const [modalImgIdx, setModalImgIdx] = useState(0);
 
   useEffect(() => {
-    supabaseSelect<ProductRow[]>(
-      "products?select=*&active=eq.true&order=created_at.desc",
-    )
-      .then((rows) => setProducts(rows.map(mapProduct)))
+    fetch("/api/products")
+      .then((r) => r.json())
+      .then((data) => setProducts(data.filter((p: any) => p.active !== false)))
       .catch((err) => console.error("Failed to load products:", err));
   }, []);
 

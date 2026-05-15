@@ -2,7 +2,6 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
-const http = require('http');
 const multer = require('multer');
 require('dotenv').config();
 
@@ -10,8 +9,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const TG_BOT_TOKEN = process.env.TG_BOT_TOKEN || '';
 const TG_CHAT_ID = process.env.TG_CHAT_ID || '';
-const SUPABASE_URL = process.env.SUPABASE_URL || '';
-const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
 
 app.use(express.json());
 
@@ -87,45 +84,8 @@ app.post('/api/messages', (req, res) => {
   res.json({ ok: true });
 });
 
-// Products & Collections — merged from JSON file + Supabase
-app.get('/api/products', async (req, res) => {
-  // Try Supabase first (has all products with images)
-  if (SUPABASE_URL && SUPABASE_KEY) {
-    try {
-      const data = await new Promise((resolve, reject) => {
-        https.get(`${SUPABASE_URL}/rest/v1/products?select=*&order=created_at.desc`, {
-          headers: {
-            apikey: SUPABASE_KEY,
-            Authorization: `Bearer ${SUPABASE_KEY}`,
-          },
-        }, (resp) => {
-          let body = '';
-          resp.on('data', (chunk) => body += chunk);
-          resp.on('end', () => {
-            try { resolve(JSON.parse(body)); }
-            catch { reject(new Error('parse fail')); }
-          });
-        }).on('error', reject);
-      });
-      if (Array.isArray(data) && data.length > 0) {
-        // Transform Supabase format to frontend format
-        const mapped = data.map(p => ({
-          id: p.id, name: p.name, desc: p.description || '',
-          price: p.price, oldPrice: p.old_price || null,
-          category: p.category || '', sizes: p.sizes || ['S','M','L','XL'],
-          images: p.images || [], badge: p.badge || null,
-          active: p.active, emoji: p.emoji || '📦',
-          fabric: p.fabric || '92% хлопок, 8% лайкра',
-        }));
-        return res.json(mapped);
-      }
-    } catch (e) {
-      console.error('Supabase fetch error:', e.message);
-    }
-  }
-  // Fallback: read from JSON file
-  res.json(readJSON('products.json'));
-});
+// Products & Collections
+app.get('/api/products', (req, res) => res.json(readJSON('products.json')));
 app.put('/api/products', (req, res) => { writeJSON('products.json', req.body); res.json({ ok: true }); });
 app.get('/api/collections', (req, res) => res.json(readJSON('collections.json')));
 app.put('/api/collections', (req, res) => { writeJSON('collections.json', req.body); res.json({ ok: true }); });

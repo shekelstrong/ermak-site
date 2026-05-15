@@ -1,26 +1,26 @@
-name: Build Check
+name: Deploy ERMAK Site
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+    - name: Execute deploy on server
+      uses: appleboy/ssh-action@v1.2.2
       with:
-        node-version: 20
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build project
-      run: npm run build
-      env:
-        VITE_SUPABASE_URL: https://rakkojwkwkrrefxjpkgi.supabase.co
-        VITE_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJha29vandrd2tycmVmeGpwa2dpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4OTA3NTAsImV4cCI6MjA5MjQ2Njc1MH0.j6F3oNuE134R6w9oXkVmhzimpcz6Ow1a76bdwRZ-xAA
+        host: 108.165.164.85
+        username: root
+        key: ${{ secrets.SSH_KEY_HERMES }}
+        script: |
+          cd /root/ermak-site
+          git fetch origin main
+          git reset --hard origin/main
+          npm ci
+          npm run build
+          rsync -a dist/ /var/www/ermak-site/dist/
+          cp server/server.js /var/www/ermak-site/server.cjs
+          systemctl restart ermak-site.service 2>/dev/null || true
+          nginx -t && systemctl reload nginx 2>/dev/null || true

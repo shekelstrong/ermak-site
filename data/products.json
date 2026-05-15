@@ -1,0 +1,138 @@
+[
+  {
+    "id": 1,
+    "name": "Худи «Атаман»",
+    "desc": "Чёрное худи с принтом всадника",
+    "price": 5490,
+    "oldPrice": null,
+    "category": "hoodies",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [],
+    "badge": "Хит",
+    "active": true,
+    "emoji": "Е"
+  },
+  {
+    "id": 2,
+    "name": "Футболка «Покров»",
+    "desc": "Оверсайз, принт «Покров Богородицы»",
+    "price": 2990,
+    "oldPrice": null,
+    "category": "tshirts",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [],
+    "badge": "Новинка",
+    "active": true,
+    "emoji": "⚔️"
+  },
+  {
+    "id": 3,
+    "name": "Футболка «Ермак»",
+    "desc": "Базовая чёрная с логотипом-всадником",
+    "price": 2490,
+    "oldPrice": null,
+    "category": "tshirts",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [],
+    "badge": null,
+    "active": true,
+    "emoji": "🐎"
+  },
+  {
+    "id": 4,
+    "name": "Штаны «Поход»",
+    "desc": "Карго-штаны, камуфляжные вставки",
+    "price": 4990,
+    "oldPrice": 5990,
+    "category": "pants",
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [],
+    "badge": "Скидка",
+    "active": true,
+    "emoji": "🛡️"
+  },
+  {
+    "id": 5,
+    "name": "Chxuxiix",
+    "desc": " Gxhxjzkkx",
+    "price": 37389495,
+    "oldPrice": 474738,
+    "category": "accessories",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "/uploads/1776728810823-yko934.png"
+    ],
+    "badge": "Новинка",
+    "emoji": "Е",
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "Fbdjdkd",
+    "desc": "Chxjdkdk",
+    "price": 6000,
+    "oldPrice": 9000,
+    "category": "pants",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "/uploads/1776730897285-b1nr5x.png"
+    ],
+    "badge": "Новинка",
+    "emoji": "Е",
+    "active": true
+  },
+  {
+    "id": 7,
+    "name": "Товар",
+    "desc": "Описание",
+    "price": 19000,
+    "oldPrice": 4738000,
+    "category": "Футболки",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "/uploads/1776901619661-0dbgip.jpg"
+    ],
+    "badge": "Новинка",
+    "active": true,
+    "emoji": ""
+  }
+]
